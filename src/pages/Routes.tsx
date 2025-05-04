@@ -13,7 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-// Mock data for routes (same as Index)
+// Fix type issues with the routes by explicitly defining tuples
 const routes = [
   {
     id: "1",
@@ -24,11 +24,11 @@ const routes = [
     frequency: "30 min",
     operatingHours: "6:00 AM - 10:00 PM",
     status: "active" as const,
-    path: [[36.156, -115.178], [36.148, -115.157], [36.139, -115.129]],
+    path: [[36.156, -115.178] as [number, number], [36.148, -115.157] as [number, number], [36.139, -115.129] as [number, number]],
     stops: [
-      { name: "Charleston Campus", location: [36.156, -115.178] },
-      { name: "Downtown Terminal", location: [36.148, -115.157] },
-      { name: "Henderson Campus", location: [36.139, -115.129] }
+      { name: "Charleston Campus", location: [36.156, -115.178] as [number, number] },
+      { name: "Downtown Terminal", location: [36.148, -115.157] as [number, number] },
+      { name: "Henderson Campus", location: [36.139, -115.129] as [number, number] }
     ]
   },
   {
@@ -40,11 +40,11 @@ const routes = [
     frequency: "30 min",
     operatingHours: "6:00 AM - 9:00 PM",
     status: "active" as const,
-    path: [[36.198, -115.175], [36.177, -115.172], [36.156, -115.178]],
+    path: [[36.198, -115.175] as [number, number], [36.177, -115.172] as [number, number], [36.156, -115.178] as [number, number]],
     stops: [
-      { name: "North Las Vegas Campus", location: [36.198, -115.175] },
-      { name: "Civic Center", location: [36.177, -115.172] },
-      { name: "Charleston Campus", location: [36.156, -115.178] }
+      { name: "North Las Vegas Campus", location: [36.198, -115.175] as [number, number] },
+      { name: "Civic Center", location: [36.177, -115.172] as [number, number] },
+      { name: "Charleston Campus", location: [36.156, -115.178] as [number, number] }
     ]
   },
   {
@@ -56,15 +56,16 @@ const routes = [
     frequency: "45 min",
     operatingHours: "7:00 AM - 8:00 PM",
     status: "limited" as const,
-    path: [[36.139, -115.129], [36.147, -115.189], [36.159, -115.205]],
+    path: [[36.139, -115.129] as [number, number], [36.147, -115.189] as [number, number], [36.159, -115.205] as [number, number]],
     stops: [
-      { name: "Henderson Campus", location: [36.139, -115.129] },
-      { name: "The Crossing", location: [36.147, -115.189] },
-      { name: "West Charleston", location: [36.159, -115.205] }
+      { name: "Henderson Campus", location: [36.139, -115.129] as [number, number] },
+      { name: "The Crossing", location: [36.147, -115.189] as [number, number] },
+      { name: "West Charleston", location: [36.159, -115.205] as [number, number] }
     ]
   }
 ];
 
+// This component is now imported as RoutesPage in App.tsx
 export default function Routes() {
   const [selectedRouteId, setSelectedRouteId] = useState<string | null>(null);
   const [filter, setFilter] = useState<string>('all');
